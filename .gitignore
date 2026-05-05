@@ -1,0 +1,11 @@
+node_modules/
+.env
+dist/
+build/
+.DS_Store
+*.log
+*.zip
+fsd report.docx
+MedBook_Final_Report.docx
+report_content.txt
+report_content.json
