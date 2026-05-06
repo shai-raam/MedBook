@@ -4,7 +4,12 @@ require('dotenv').config();
 if (!process.env.DATABASE_URL) {
   console.error('❌ DATABASE_URL is NOT defined in environment variables!');
 } else {
-  console.log('✅ DATABASE_URL is defined (starts with:', process.env.DATABASE_URL.substring(0, 15), '...)');
+  try {
+    const dbUrl = new URL(process.env.DATABASE_URL);
+    console.log('✅ DATABASE_URL detected. Host:', dbUrl.hostname);
+  } catch (e) {
+    console.error('❌ DATABASE_URL is defined but INVALID format:', e.message);
+  }
 }
 
 const pool = new Pool({
