@@ -1,6 +1,12 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
+if (!process.env.DATABASE_URL) {
+  console.error('❌ DATABASE_URL is NOT defined in environment variables!');
+} else {
+  console.log('✅ DATABASE_URL is defined (starts with:', process.env.DATABASE_URL.substring(0, 15), '...)');
+}
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
